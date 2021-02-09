@@ -102,6 +102,9 @@ do_apt_deps() {
         process_cmds -pf "install libssl-dev" -apt-install "libssl-dev"
     fi
 
+    if ! dpkg -l rustc >/dev/null 2>&1 ; then
+        process_cmds -pf "install rustc" -apt-install "rustc"
+    fi
     # TODO add picocom, maybe ser2net, ensure process_cmds can accept multiple packages
 
     logit "$process - Complete"
